@@ -1,16 +1,15 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
+  <!--a href="https://github.com/othneildrew/Best-README-Template">
     <img src="logo.png" alt="Logo" width="80" height="80">
-  </a>
+  </a-->
 
   <h3 align="center">Virtual Try On System</h3>
 <div align="center">
-
-    <img src="smart_office_doc/design_schema.png" alt="design">
-
- </div>
+  <a href="https://github.com/othneildrew/Best-README-Template">
+    <img src="docs/image.jpg" alt="Logo" width="300" height="300">
+  </a>
 </div>
 
 <!-- ABOUT THE PROJECT -->
