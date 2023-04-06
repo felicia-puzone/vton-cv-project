@@ -1,12 +1,14 @@
 Note inspired [khanhha](https://khanhha.github.io) articles:
 - [Thin Plate Splines Warping](https://khanhha.github.io/posts/Thin-Plate-Splines-Warping/)
-- [Image-Based Virtual Try On Network - Part 1](# Image-Based Virtual Try On Network - Part 1)
+- [Image-Based Virtual Try On Network - Part 1](https://khanhha.github.io/posts/Image-based-Virtual-Try-On-Network-Part-1/)
 
 
 
 # What is an image warping problem?
-Given an image with a sparse set of control points $(x_i,y_i)$ with corresponding displacements $(\Delta x_i,\Delta y_i)$ , we want to find a mapping $f:(x,y)→(x′,y′)$ from pixels in the input image to pixels in the warped/deformed image so that the corresponding warped control points $(x′_i,y′_i)$closely match its expected targets $(x_i+\Delta x_i,y_i + \Delta y_i)$, and the surrounding points are deformed as smoothly as possible.
+Given an image with a sparse set of control points $(x_i,y_i)$ with corresponding displacements $(\Delta x_i,\Delta y_i)$ , we want to find a mapping $f:(x,y)→(x′,y′)$ from pixels in the input image to pixels in the warped/deformed image so that the corresponding warped control points $(x′_i,y′_i)$ closely match its expected targets $(x_i+\Delta x_i,y_i + \Delta y_i)$, and the surrounding points are deformed as smoothly as possible.
+
 ![warping_chess](https://user-images.githubusercontent.com/51177049/230336535-958a24e0-1d12-4def-b830-1ca8ecdd54c7.png)
+
 In the image above, we want to warp the origin point of each red arrow with the final point of each arrow.
 
 
