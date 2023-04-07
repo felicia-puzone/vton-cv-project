@@ -29,7 +29,7 @@ def get_mask_from_label_map_file(dataset_location:str, type:str, fileid:str):
     :param dataset_location: location of main directory of dataset
     :param type: type of clothing
     :param fileid: only the number_id section of the filename
-    :return: Tensor mask
+    :return: original image Tensor and Tensor mask
     """
     segm_id = "_4.png"
     original_id="_0.jpg"
