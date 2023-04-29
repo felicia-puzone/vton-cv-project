@@ -1,3 +1,36 @@
-\begin{thebibliography}{}
+\begin{thebibliography}{1}
+
+\bibitem{dual-branch}
+Emanuele Fenocchi, Davide Morelli, Marcella Cornia, Lorenzo Baraldi, Fabio
+  Cesari, and Rita Cucchiara.
+\newblock Dual-branch collaborative transformer for virtual try-on.
+\newblock In {\em 2022 IEEE/CVF Conference on Computer Vision and Pattern
+  Recognition Workshops (CVPRW)}, pages 2246--2250, 2022.
+
+\bibitem{dress-code}
+Davide Morelli, Matteo Fincato, Marcella Cornia, Federico Landi, Fabio Cesari,
+  and Rita Cucchiara.
+\newblock {Dress Code: High-Resolution Multi-Category Virtual Try-On}.
+\newblock In {\em Proceedings of the European Conference on Computer Vision},
+  2022.
+
+\bibitem{u-net}
+Olaf Ronneberger, Philipp Fischer, and Thomas Brox.
+\newblock U-net: Convolutional networks for biomedical image segmentation.
+\newblock In Nassir Navab, Joachim Hornegger, William~M. Wells, and
+  Alejandro~F. Frangi, editors, {\em Medical Image Computing and
+  Computer-Assisted Intervention -- MICCAI 2015}, pages 234--241, Cham, 2015.
+  Springer International Publishing.
+
+\bibitem{CP-VTON}
+Bochao Wang, Huabin Zheng, Xiaodan Liang, Yimin Chen, and Liang Lin.
+\newblock Toward characteristic-preserving image-based virtual try-on network.
+\newblock In {\em Proceedings of the European Conference on Computer Vision
+  (ECCV)}, pages 589--604, 2018.
+
+\bibitem{detectron2}
+Yuxin Wu, Alexander Kirillov, Francisco Massa, Wan-Yen Lo, and Ross Girshick.
+\newblock Detectron2.
+\newblock \url{https://github.com/facebookresearch/detectron2}, 2019.
 
 \end{thebibliography}

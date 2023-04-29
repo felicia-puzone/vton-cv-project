@@ -9,7 +9,7 @@ Our project will be focusing on designing a 2D image-based virtual try on system
 \subsection{Related works}
 In order to solve this problem we have analyzed already existing literature and their approaches to the same problem.
 
-The CP-VTON paper identifies four main requirements that need to be accomplished by a virtual try-on system:
+The CP-VTON paper\cite{CP-VTON} identifies four main requirements that need to be accomplished by a virtual try-on system:
 \begin{itemize}
 \item warping the garment according to the body shape and pose of the target person; 
 \item transferring the texture of the garment on the target person without losing important details; 
@@ -20,19 +20,21 @@ The CP-VTON paper identifies four main requirements that need to be accomplished
 
 One of the most important advancements made by the CP-VTON architecture is the introduction of a warping module that computes a learnable Thin-Plate Spline transformation that warps the garment in a reliable way.
 
-We obtained access to the Dress-Code dataset, collected by AImageLab, which, given its size, may potentially boost the efficacy of our system.
+We obtained access to the Dress-Code dataset \cite{dress-code}, collected by AImageLab, which, given its size, may potentially boost the efficacy of our system.
 
 We also noticed that, in recent years, that there have been a lot of improvements to the quality of the generated images through the introduction of transformer-based modules. 
-This approach followed by the Dual-Brach paper to solve the virtual try-on problem with great results, as such we will also attempt to implement a similar transformer-based architecture. 
+This approach is followed by the paper \textbf{Dual-Branch Collaborative Transformer for Virtual Try-On}\cite{dual-branch} to solve the virtual try-on problem with great results, as such we will also attempt to implement a similar transformer-based architecture. 
 
 \subsection{General approach}
 Our system will be subdivided into different modules each one designed to solve specific step of the process.
 \begin{itemize}
-\item pre-processing: this module handles all which regards the image enhancement (denoising, light adjustement, ...), performs the background removal task;
-\item person representation: this module performs pose estimation and the semantic segmentation of the person into their body parts;
-\item warping module: this module implements a geometric transformation that envelops the body shape of the subject with the fabric of the clothing item;
-\item try-on: as the last module in the pipeline, this part generates a new image by composing the warped garment over the subject and should ensure the satisfaction of the requirements stated in the above section.
+\item pre-processing: this module handles all which regards the image enhancement (denoising, light adjustement, etc...), performs the background removal task;
 
+\item person representation: this module performs pose estimation and the semantic segmentation of the person into their body parts;
+
+\item warping module: this module implements a geometric transformation that envelops the body shape of the subject with the fabric of the clothing item;
+
+\item try-on: as the last module in the pipeline, this part generates a new image by composing the warped garment over the subject and should ensure the satisfaction of the requirements stated in the above section.
 \end{itemize}
 
 

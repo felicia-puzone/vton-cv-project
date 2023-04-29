@@ -1,7 +1,7 @@
 {\color{gray}\hrule}
 \begin{center}
 \section{Technical Approach}
-\textbf{bla bla }
+%\textbf{bla bla }
 \end{center}
 {\color{gray}\hrule}
 
@@ -14,10 +14,10 @@ As the objective of the system is to be adaptable to dirty and noisy input image
 
 A first denoising pass is performed utilizing the bilateral filter, after which the image goes through a light adjustment procedure which entails contrast stretching.
 
-After these operations we perform the background removal. This is because we thought that a potential point of improvement within the virtual try-on pipeline could be the removal of the background before going deeper into the network as the background information may hinder the performance the subsequent modules. To perform such a task we are looking and comparing multiple already existing solutions such as:
+After these operations we perform the background removal. This is because we thought that a potential point of improvement within the virtual try-on pipeline could be the removal of the background before going deeper into the network as the background information may hinder the performance of the subsequent modules. To perform such a task we are looking and comparing multiple already existing solutions such as:
 \begin{itemize}
-\item U-Net: fine-tuning a pre-trained U-Net model using the Tik-Tok dataset;
-\item Detectron2: fine-tuning on Dress-Code the Detectron2 segmentation module released by Facebook.
+\item U-Net\cite{u-net} fine-tuning a pre-trained U-Net model using the Tik-Tok dataset;
+\item Detectron2\cite{detectron2}: fine-tuning on Dress-Code the Detectron2 segmentation module released by Facebook.
 \end{itemize}
 
 We will compare the results and choose the best one according to state-of-the-art evaluation metrics (DICE etc...).
@@ -31,22 +31,40 @@ Regarding the segmentation problem we have, as of now, identified the Detectron2
 
 Instead, for the keypoint extraction problem we are comparing the DensePose module (from Detectron2) and the OpenPose module.
 
+\end{multicols}
 
+\begin{figure*}[h]
+\centering
+\includegraphics[scale=0.4]{warping_module_schema}
+\caption{Warping module schema}
+\label{fig:warp_schema}
+\end{figure*}
 
+\begin{figure*}[h]
+\centering
+\includegraphics[scale=0.5]{generative_module}
+\caption{Generative module schema}
+\label{fig:gen_schema}
+\end{figure*}
+
+\begin{multicols}{2}
 
 \subsection{Warping module}
-\includegraphics[scale=0.4]{warping_module_schema}
-
-The warping module takes as inputs the person representation feature vector and the garment image and, based on the keypoints and the segmantation mask, it warps the garment fitting it to the body shape of the subject.
+As depicted in the figure \ref{fig:warp_schema}, the warping module takes as inputs the person representation feature vector and the garment image and, based on the keypoints and the segmantation mask, it warps the garment fitting it to the body shape of the subject.
 
 The output is the set of the TPS parameters, which are used to geometrically transform the clothing item.
 
 
 
 \subsection{Generative module}
+As depicted in the figure \ref{fig:gen_schema}, the generative module is the one which will be producing the final image by merging the warped garment with the human picture.
+
+The module will consist of a transformer-based feature extraction unit which will feed into an autoencoder unit which will generate the output image.
 
 
 
+
+\subsection{Garment Retrieval}
 
 
 \end{multicols}

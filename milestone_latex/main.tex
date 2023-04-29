@@ -2,6 +2,11 @@
 \usepackage{graphicx}
 %Path relative to the main .tex file 
 \graphicspath{ {./images/} }
+\usepackage[export]{adjustbox}
+\usepackage{caption}
+\captionsetup{tableposition=top,figureposition=bottom,font=small}
+\usepackage{array}
+\usepackage{placeins}
 % Package to make citations superscrit with brackets
 \usepackage[super,square]{natbib}
 % Package to change margin size
@@ -42,7 +47,7 @@
 % Makes header
 \pagestyle{fancy}
 \thispagestyle{empty}
-\fancyhead[R]{\textit{Baltic Security Foundation}}
+\fancyhead[R]{\textit{CVCS Course Project Milestone}}
 \fancyhead[L]{}
 
 % Makes footnotes with an asterisk
@@ -70,9 +75,9 @@
 \medskip
 \input{./sections/1_intro.tex}
 \input{./sections/2_technical_approach.tex}
-\input{./sections/3_section.tex}
-\input{./sections/4_section.tex}
-\input{./sections/5_conclusion.tex}
+\input{./sections/3_results.tex}
+
 \bibliographystyle{plain}
 \bibliography{references}
+
 \end{document}
