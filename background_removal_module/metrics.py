@@ -3,7 +3,7 @@ import numpy as np
 import cv2
 from sklearn.metrics import jaccard_score, f1_score
 import random
-from statistics import median
+from statistics import median,mean
 import argparse
 import os
 import shutil
@@ -55,6 +55,8 @@ def metric_results(true_dir,pred_dir):
     scores["dice_list"] = dice_list
     scores["iou_median"] = median(iou_list)
     scores["dice_median"] = median(dice_list)
+    scores["iou_mean"] = mean(iou_list)
+    scores["dice_mean"] = mean(dice_list)
     return scores
 
 if __name__ == "__main__":
