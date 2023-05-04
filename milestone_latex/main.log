@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.12.3)  29 APR 2023 11:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.12.3)  4 MAY 2023 11:54
 entering extended mode
 **./main.tex
 (main.tex
@@ -593,12 +593,111 @@ Underfull \hbox (badness 10000) in paragraph at lines 11--11
 \tf@toc=\write4
 \openout4 = `main.toc'.
 
- [1
+
+Underfull \hbox (badness 10000) in paragraph at lines 15--16
+[]\OT1/cmr/m/n/12 The pa-per \OT1/cmr/m/it/12 To-ward Characteristic-
+ []
+
+[1
 
 {C:/Users/martu/AppData/Local/MiKTeX/pdftex/config/pdftex.map}])
 (sections/2_technical_approach.tex
-Underfull \hbox (badness 7433) in paragraph at lines 20--21
-\OT1/cmr/m/n/12 Code the De-tec-tron2 seg-men-ta-tion
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[2]
+<./images//warping_module_schema.png, id=105, 849.1725pt x 485.4135pt>
+File: ./images//warping_module_schema.png Graphic file (type png)
+<use ./images//warping_module_schema.png>
+Package pdftex.def Info: ./images//warping_module_schema.png  used on input lin
+e 41.
+(pdftex.def)             Requested size: 339.66298pt x 194.16196pt.
+<./images//generative_module.png, id=107, 955.1685pt x 455.301pt>
+File: ./images//generative_module.png Graphic file (type png)
+<use ./images//generative_module.png>
+Package pdftex.def Info: ./images//generative_module.png  used on input line 48
+.
+(pdftex.def)             Requested size: 477.58308pt x 227.64993pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[3 <./images//warping_module_schema.png>]) (sections/3_results.tex
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[4 <./images//generative_module.png>]
+<./images//constr_stretch.png, id=132, 362.5545pt x 311.36325pt>
+File: ./images//constr_stretch.png Graphic file (type png)
+<use ./images//constr_stretch.png>
+Package pdftex.def Info: ./images//constr_stretch.png  used on input line 36.
+(pdftex.def)             Requested size: 145.11053pt x 124.61911pt.
+<./images//hist_constr_stretch.png, id=133, 423.38174pt x 305.943pt>
+File: ./images//hist_constr_stretch.png Graphic file (type png)
+<use ./images//hist_constr_stretch.png>
+Package pdftex.def Info: ./images//hist_constr_stretch.png  used on input line 
+36.
+(pdftex.def)             Requested size: 145.11053pt x 104.85953pt.
+<./images//hist_constr_stretch_1.png, id=134, 425.79076pt x 302.93175pt>
+File: ./images//hist_constr_stretch_1.png Graphic file (type png)
+<use ./images//hist_constr_stretch_1.png>
+Package pdftex.def Info: ./images//hist_constr_stretch_1.png  used on input lin
+e 36.
+(pdftex.def)             Requested size: 145.11053pt x 103.2404pt.
+<./images//bilateral_filtr.png, id=135, 365.56575pt x 307.1475pt>
+File: ./images//bilateral_filtr.png Graphic file (type png)
+<use ./images//bilateral_filtr.png>
+Package pdftex.def Info: ./images//bilateral_filtr.png  used on input line 44.
+(pdftex.def)             Requested size: 241.84843pt x 203.2007pt.
+<./images//ground-truth-result.png, id=136, 542.025pt x 963.6pt>
+File: ./images//ground-truth-result.png Graphic file (type png)
+<use ./images//ground-truth-result.png>
+Package pdftex.def Info: ./images//ground-truth-result.png  used on input line 
+55.
+(pdftex.def)             Requested size: 72.55157pt x 128.97763pt.
+<./images//unet-result.png, id=137, 542.025pt x 963.6pt>
+File: ./images//unet-result.png Graphic file (type png)
+<use ./images//unet-result.png>
+Package pdftex.def Info: ./images//unet-result.png  used on input line 56.
+(pdftex.def)             Requested size: 72.55157pt x 128.97763pt.
+<./images//detectron-result.png, id=138, 542.025pt x 963.6pt>
+File: ./images//detectron-result.png Graphic file (type png)
+<use ./images//detectron-result.png>
+Package pdftex.def Info: ./images//detectron-result.png  used on input line 57.
+
+(pdftex.def)             Requested size: 72.55157pt x 128.97763pt.
+<./images//detectron-grab-cut-result.png, id=139, 542.025pt x 963.6pt>
+File: ./images//detectron-grab-cut-result.png Graphic file (type png)
+<use ./images//detectron-grab-cut-result.png>
+Package pdftex.def Info: ./images//detectron-grab-cut-result.png  used on input
+ line 58.
+(pdftex.def)             Requested size: 72.55157pt x 128.97763pt.
+<./images//hist_results.png, id=140, 654.0435pt x 386.6445pt>
+File: ./images//hist_results.png Graphic file (type png)
+<use ./images//hist_results.png>
+Package pdftex.def Info: ./images//hist_results.png  used on input line 67.
+(pdftex.def)             Requested size: 532.0695pt x 314.55496pt.
+
+Overfull \hbox (48.37263pt too wide) in paragraph at lines 67--68
+ [][] 
  []
 
 
@@ -609,19 +708,18 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[2]
-<./images//warping_module_schema.png, id=96, 849.1725pt x 485.4135pt>
-File: ./images//warping_module_schema.png Graphic file (type png)
-<use ./images//warping_module_schema.png>
-Package pdftex.def Info: ./images//warping_module_schema.png  used on input lin
-e 38.
-(pdftex.def)             Requested size: 339.66298pt x 194.16196pt.
-<./images//generative_module.png, id=98, 955.1685pt x 455.301pt>
-File: ./images//generative_module.png Graphic file (type png)
-<use ./images//generative_module.png>
-Package pdftex.def Info: ./images//generative_module.png  used on input line 45
-.
-(pdftex.def)             Requested size: 477.58308pt x 227.64993pt.
+[5 <./images//constr_stretch.png> <./images//hist_constr_stretch.png> <./images
+//hist_constr_stretch_1.png> <./images//bilateral_filtr.png>]
+<./images//orb_sample.png, id=152, 699.8145pt x 473.3685pt>
+File: ./images//orb_sample.png Graphic file (type png)
+<use ./images//orb_sample.png>
+Package pdftex.def Info: ./images//orb_sample.png  used on input line 90.
+(pdftex.def)             Requested size: 193.47578pt x 130.86653pt.
+<./images//orb_sample_1.png, id=153, 705.837pt x 473.3685pt>
+File: ./images//orb_sample_1.png Graphic file (type png)
+<use ./images//orb_sample_1.png>
+Package pdftex.def Info: ./images//orb_sample_1.png  used on input line 90.
+(pdftex.def)             Requested size: 193.47578pt x 129.75418pt.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -631,64 +729,9 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[3 <./images//warping_module_schema.png> <./images//generative_module.png>])
-(sections/3_results.tex
-<./images//constr_stretch.png, id=112, 362.5545pt x 311.36325pt>
-File: ./images//constr_stretch.png Graphic file (type png)
-<use ./images//constr_stretch.png>
-Package pdftex.def Info: ./images//constr_stretch.png  used on input line 30.
-(pdftex.def)             Requested size: 145.11053pt x 124.61911pt.
-<./images//hist_constr_stretch.png, id=113, 423.38174pt x 305.943pt>
-File: ./images//hist_constr_stretch.png Graphic file (type png)
-<use ./images//hist_constr_stretch.png>
-Package pdftex.def Info: ./images//hist_constr_stretch.png  used on input line 
-30.
-(pdftex.def)             Requested size: 145.11053pt x 104.85953pt.
-<./images//hist_constr_stretch_1.png, id=114, 425.79076pt x 302.93175pt>
-File: ./images//hist_constr_stretch_1.png Graphic file (type png)
-<use ./images//hist_constr_stretch_1.png>
-Package pdftex.def Info: ./images//hist_constr_stretch_1.png  used on input lin
-e 30.
-(pdftex.def)             Requested size: 145.11053pt x 103.2404pt.
-<./images//bilateral_filtr.png, id=115, 365.56575pt x 307.1475pt>
-File: ./images//bilateral_filtr.png Graphic file (type png)
-<use ./images//bilateral_filtr.png>
-Package pdftex.def Info: ./images//bilateral_filtr.png  used on input line 38.
-(pdftex.def)             Requested size: 241.84843pt x 203.2007pt.
-<./images//u-net-sample-1.png, id=116, 542.025pt x 963.6pt>
-File: ./images//u-net-sample-1.png Graphic file (type png)
-<use ./images//u-net-sample-1.png>
-Package pdftex.def Info: ./images//u-net-sample-1.png  used on input line 47.
-(pdftex.def)             Requested size: 72.55157pt x 128.97763pt.
-<./images//u-net-sample-2.png, id=117, 542.025pt x 963.6pt>
-File: ./images//u-net-sample-2.png Graphic file (type png)
-<use ./images//u-net-sample-2.png>
-Package pdftex.def Info: ./images//u-net-sample-2.png  used on input line 47.
-(pdftex.def)             Requested size: 72.55157pt x 128.97763pt.
-<./images//u-net-sample-3.png, id=118, 542.025pt x 963.6pt>
-File: ./images//u-net-sample-3.png Graphic file (type png)
-<use ./images//u-net-sample-3.png>
-Package pdftex.def Info: ./images//u-net-sample-3.png  used on input line 47.
-(pdftex.def)             Requested size: 72.55157pt x 128.97763pt.
-<./images//u-net-sample-1-1.png, id=119, 542.025pt x 963.6pt>
-File: ./images//u-net-sample-1-1.png Graphic file (type png)
-<use ./images//u-net-sample-1-1.png>
-Package pdftex.def Info: ./images//u-net-sample-1-1.png  used on input line 49.
-
-(pdftex.def)             Requested size: 72.55157pt x 128.97763pt.
-<./images//u-net-sample-2-1.png, id=120, 542.025pt x 963.6pt>
-File: ./images//u-net-sample-2-1.png Graphic file (type png)
-<use ./images//u-net-sample-2-1.png>
-Package pdftex.def Info: ./images//u-net-sample-2-1.png  used on input line 49.
-
-(pdftex.def)             Requested size: 72.55157pt x 128.97763pt.
-<./images//u-net-sample-3-1.png, id=121, 542.025pt x 963.6pt>
-File: ./images//u-net-sample-3-1.png Graphic file (type png)
-<use ./images//u-net-sample-3-1.png>
-Package pdftex.def Info: ./images//u-net-sample-3-1.png  used on input line 49.
-
-(pdftex.def)             Requested size: 72.55157pt x 128.97763pt.
-
+[6 <./images//ground-truth-result.png (PNG copy)> <./images//unet-result.png (P
+NG copy)> <./images//detectron-result.png (PNG copy)> <./images//detectron-grab
+-cut-result.png (PNG copy)> <./images//hist_results.png>]) (main.bbl)
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -697,40 +740,18 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[4 <./images//constr_stretch.png> <./images//hist_constr_stretch.png> <./images
-//hist_constr_stretch_1.png>]) (main.bbl
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[5 <./images//bilateral_filtr.png> <./images//u-net-sample-1.png (PNG copy)> <.
-/images//u-net-sample-2.png (PNG copy)> <./images//u-net-sample-3.png (PNG copy
-)> <./images//u-net-sample-1-1.png (PNG copy)> <./images//u-net-sample-2-1.png 
-(PNG copy)> <./images//u-net-sample-3-1.png (PNG copy)>])
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[6] (main.aux)
+[7 <./images//orb_sample.png> <./images//orb_sample_1.png>] (main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: D2C12E330AA78AB2203B57773D1B1217;814.
+(rerunfilecheck)             Checksum: 12A19FD04DD920A256A6733A295B09AE;950.
  ) 
 Here is how much of TeX's memory you used:
- 9420 strings out of 479799
- 156134 string characters out of 2869723
- 548704 words of memory out of 3000000
- 26196 multiletter control sequences out of 15000+200000
+ 9440 strings out of 479799
+ 156548 string characters out of 2869723
+ 549015 words of memory out of 3000000
+ 26210 multiletter control sequences out of 15000+200000
  540808 words of font info for 48 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 78i,14n,115p,751b,469s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 78i,14n,115p,812b,520s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\martu\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
 1200.pk><C:/Users/martu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
 ts/cm/cmbx12.pfb><C:/Users/martu/AppData/Local/Programs/MiKTeX/fonts/type1/publ
@@ -740,9 +761,9 @@ fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/martu/AppData/Local/Programs/
 MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/martu/AppData/Local/
 Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/martu/AppDa
 ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on main.pdf (6 pages, 1250467 bytes).
+Output written on main.pdf (7 pages, 2250100 bytes).
 PDF statistics:
- 179 PDF objects out of 1000 (max. 8388607)
- 32 named destinations out of 1000 (max. 500000)
- 165 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 211 PDF objects out of 1000 (max. 8388607)
+ 38 named destinations out of 1000 (max. 500000)
+ 186 words of extra memory for PDF output out of 10000 (max. 10000000)
 

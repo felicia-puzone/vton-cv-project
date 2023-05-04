@@ -14,6 +14,13 @@ Davide Morelli, Matteo Fincato, Marcella Cornia, Federico Landi, Fabio Cesari,
 \newblock In {\em Proceedings of the European Conference on Computer Vision},
   2022.
 
+\bibitem{tik_tok_dataset}
+Kucev Roman.
+\newblock Segmentation full body tiktok dancing dataset.
+\newblock
+  \url{https://www.kaggle.com/datasets/tapakah68/segmentation-full-body-tiktok-dancing-dataset}.
+\newblock Accessed: 2023-5-1.
+
 \bibitem{u-net}
 Olaf Ronneberger, Philipp Fischer, and Thomas Brox.
 \newblock U-net: Convolutional networks for biomedical image segmentation.
