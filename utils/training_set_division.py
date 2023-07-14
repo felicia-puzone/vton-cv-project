@@ -99,4 +99,4 @@ def get_reduced_dress_dataset(data_dir, new_data_dir, ratio):
 if __name__ == "__main__":
     # train_set, test_set, validate_set=get_training_validating_testing_sets("<insert_image_directory_here>",0.5,0.25,0.25)
     # make_training_test_validation_dirs("F:\pycharm_projects_F\CV_P_13_2\dataset_division_test",".",0.5,0.25,0.25)
-    get_reduced_dress_dataset("D:\\Tumor\\DressCodeResized","D:\\Tumor\\DressCodeDoubleResized",0.5)
+    get_reduced_dress_dataset("D:\\Tumor\\DressCodeFinal2.0","D:\\Tumor\\DressCodeFinal3.0",0.25)
