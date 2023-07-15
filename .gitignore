@@ -2,3 +2,5 @@
 /unet/Pytorch-UNet/data/imgs/
 /unet/Pytorch-UNet/checkpoints/
 /unet.zip
+/datasets/
+/datasets/split_dataset/Train/masks/
