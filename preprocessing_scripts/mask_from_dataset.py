@@ -68,7 +68,7 @@ if __name__ == "__main__":
         exit(-1)
 
     if opt.mask_dir is None:
-        opt.mask_dir=os.path.join(opt.label_dir,)
+        opt.mask_dir=os.path.join(opt.label_dir,"image-mask")
     if not os.path.exists(opt.mask_dir) or not os.path.isdir(opt.mask_dir):
         os.makedirs(opt.mask_dir)
     if not os.path.exists(opt.label_dir) or not os.path.isdir(opt.label_dir):
