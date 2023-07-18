@@ -9,34 +9,58 @@ import argparse
 import os
 import shutil
 
-def extractListImgs(inFolderImgs : str, inFolderMasks : str):
 
-    img = {"filename": str,"image": np.array}
-    listImgs = []
-    listMasks = []
+def generateMask(img, sharpenLevel = 0):
 
-    valid_images = [".png"]
-    for f in os.listdir(inFolderImgs):
-        ext = os.path.splitext(f)[1]
-        if ext.lower() not in valid_images:
-            continue
+    #ADJUSTING BRIGHTNESS/CONTRAST
 
-        image= cv2.imread(inFolderImgs + "\\" + f, cv2.IMREAD_COLOR)
+    # define the contrast and brightness value
+    contrast = 1.05    # Contrast control ( 0 to 127)
+    brightness = 0.05  # Brightness control (0-100)
 
-        listImgs.append({"filename": f,"image":image})
+    # call addWeighted function. use beta = 0 to effectively only
 
-    for f in os.listdir(inFolderMasks):
-        ext = os.path.splitext(f)[1]
-        if ext.lower() not in valid_images:
-            continue
+    adjusted = cv2.addWeighted(img, contrast, img, 0, brightness)
 
-        mask = cv2.imread(inFolderMasks + "\\" + f, cv2.IMREAD_GRAYSCALE)
-        mask = mask == 255
-        mask = mask.astype(int)
+    #Sharpening kernel 1
+    kernel = np.array([[0, -1, 0], [-1, 5, -1], [0, -1, 0]])
+    if(sharpenLevel == 1):
+        adjusted = cv2.filter2D(adjusted, -1, kernel)
 
-        listMasks.append({"filename": f,"image":mask})
+    v = np.median(adjusted)
+    sigma = 0.99
 
-    return listImgs, listMasks
+    lower_thresh = int(max(0, (1.0 - sigma) * v))
+    upper_thresh = int(min(255, (1.0 + sigma) * v))
+
+    edges = cv2.Canny(adjusted, 0, 255)
+
+    edges = cv2.dilate(edges, np.ones((5, 5), np.uint8))
+
+    contours, hierarchy = cv2.findContours(edges,
+                                           cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+
+    # Canny Edges After Contouring
+
+    print("Number of Contours found = " + str(len(contours)))
+
+    # Draw all contours
+    # -1 signifies drawing all contours
+    mask = np.zeros(img_input.shape, dtype=np.uint8)
+
+    cv2.drawContours(mask, contours, 0, color=(255, 255, 255), thickness=cv2.FILLED)
+
+    if (sharpenLevel == 1):
+        mask = cv2.medianBlur(mask, 33)
+
+    #computing White/Black Ratio
+
+    mask_white_count = (mask==255).sum()
+    mask_black_count = (mask==0).sum()
+
+    wb_ratio = mask_white_count/mask_black_count
+
+    return mask, wb_ratio
 
 
 if __name__ == "__main__":
@@ -59,31 +83,23 @@ if __name__ == "__main__":
 
     cloth_dir = os.path.join(opt.root_dir,"cloth")
 
+    first_fixed_count = 0
+
     for file in os.listdir(cloth_dir):
         img_input = cv2.imread(os.path.join(cloth_dir, file), cv2.IMREAD_GRAYSCALE)
 
-        v = np.median(img_input)
-        sigma = 0.99
+        mask, wb_ratio = generateMask(img_input, sharpenLevel=0)
 
-        lower_thresh = int(max(0, (1.0 - sigma) * v))
-        upper_thresh = int(min(255, (1.0 + sigma) * v))
 
-        edges = cv2.Canny(img_input, 0, 255)
+        if wb_ratio < 0.1:
+            print("Failed to draw mask at first try. Adding sharpening kernel")
 
-        edges = cv2.dilate(edges, np.ones((5, 5), np.uint8))
+            mask, wb_ratio = generateMask(img_input, sharpenLevel=1)
 
-        contours, hierarchy = cv2.findContours(edges,
-                                               cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
-
-        #Canny Edges After Contouring
-
-        print("Number of Contours found = " + str(len(contours)))
-
-        # Draw all contours
-        # -1 signifies drawing all contours
-        mask = np.zeros(img_input.shape, dtype=np.uint8)
-
-        cv2.drawContours(mask, contours, 0, color=(255, 255, 255), thickness=cv2.FILLED)
+            if wb_ratio >= 0.1: first_fixed_count +=1
 
         cv2.imwrite(os.path.join(opt.root_dir,"cloth-mask",file), mask)
+
+    print("Finished.")
+    print("Number of first pass fixed images:", first_fixed_count)
 
