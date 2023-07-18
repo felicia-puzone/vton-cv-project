@@ -24,6 +24,7 @@ def generateMask(img, sharpenLevel = 0):
 
     #Sharpening kernel 1
     kernel = np.array([[0, -1, 0], [-1, 5, -1], [0, -1, 0]])
+
     if(sharpenLevel == 1):
         adjusted = cv2.filter2D(adjusted, -1, kernel)
 
@@ -104,7 +105,7 @@ if __name__ == "__main__":
                 first_fixed_count +=1
                 total_of_good_masks += 1
 
-        cv2.imwrite(os.path.join(opt.root_dir,"cloth-mask",file), mask)
+        cv2.imwrite(os.path.join(opt.root_dir,"cloth-mask",file.split('.')[0]+'.png'), mask)
 
     print("Finished.")
     print("Number of first pass fixed images:", first_fixed_count)
