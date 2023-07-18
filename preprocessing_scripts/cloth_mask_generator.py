@@ -84,22 +84,30 @@ if __name__ == "__main__":
     cloth_dir = os.path.join(opt.root_dir,"cloth")
 
     first_fixed_count = 0
+    total_num_of_images = 0
+    total_of_good_masks = 0
 
     for file in os.listdir(cloth_dir):
         img_input = cv2.imread(os.path.join(cloth_dir, file), cv2.IMREAD_GRAYSCALE)
+        total_num_of_images += 1
 
         mask, wb_ratio = generateMask(img_input, sharpenLevel=0)
 
+        if wb_ratio >= 0.1: total_of_good_masks += 1
 
         if wb_ratio < 0.1:
             print("Failed to draw mask at first try. Adding sharpening kernel")
 
             mask, wb_ratio = generateMask(img_input, sharpenLevel=1)
 
-            if wb_ratio >= 0.1: first_fixed_count +=1
+            if wb_ratio >= 0.1:
+                first_fixed_count +=1
+                total_of_good_masks += 1
 
         cv2.imwrite(os.path.join(opt.root_dir,"cloth-mask",file), mask)
 
     print("Finished.")
     print("Number of first pass fixed images:", first_fixed_count)
+    print("Total images:", total_num_of_images)
+    print("Total of good masks:", total_of_good_masks)
 
