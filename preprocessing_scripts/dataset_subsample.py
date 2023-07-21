@@ -30,6 +30,13 @@ if __name__ == "__main__":
         exit(-1)
 
     cloth_mask_dir = os.path.join(opt.root_dir,"cloth-mask")
+    cloth_dir = os.path.join(opt.root_dir,"cloth")
+    dense_dir = os.path.join(opt.root_dir,"dense")
+    image_mask_dir = os.path.join(opt.root_dir,"image-mask")
+    image_dir = os.path.join(opt.root_dir,"images")
+    keypoints_dir = os.path.join(opt.root_dir,"keypoints")
+    label_maps_dir = os.path.join(opt.root_dir,"label_maps")
+    skeletons_dir = os.path.join(opt.root_dir,"skeletons")
 
     with open('train_pairs_new.txt', 'w') as f:
         f.write('Create a new text file!')
@@ -48,27 +55,54 @@ if __name__ == "__main__":
 
             for file in os.listdir(cloth_mask_dir):
 
+                root_file = file.split('_')[0]
+
                 img_input = cv2.imread(os.path.join(cloth_mask_dir, file), cv2.IMREAD_GRAYSCALE)
 
                 if is_valid_mask(img_input):
 
                     if write_count % train_test_ratio != 0:
-                        f_train.write(file.split('_')[0]+'_0.jpg ' + file.split('_')[0]+'_1.jpg\n')
+                        f_train.write(root_file+'_0.jpg ' + root_file+'_1.jpg\n')
                         train_count += 1
 
                     if write_count % train_test_ratio == 0:
-                        f_test.write(file.split('_')[0]+'_0.jpg ' + file.split('_')[0]+'_1.jpg\n')
+                        f_test.write(root_file+'_0.jpg ' + root_file+'_1.jpg\n')
                         test_count += 1
 
                     write_count += 1
 
                 else:
+                    print('Deleting cloth mask file:', root_file)
                     os.remove(os.path.join(cloth_mask_dir, file))
+
+                    print('Deleting cloth file:', root_file)
+                    os.remove(os.path.join(cloth_dir, root_file + '_1.jpg'))
+
+                    print('Deleting dense file:', root_file)
+                    os.remove(os.path.join(dense_dir, root_file + '_5.png'))
+
+                    print('Deleting image-mask file:', root_file)
+                    os.remove(os.path.join(image_mask_dir, root_file + '_0.png'))
+
+                    print('Deleting image file:', root_file)
+                    os.remove(os.path.join(image_dir, root_file + '_0.jpg'))
+
+                    print('Deleting keypoints file:', root_file)
+                    os.remove(os.path.join(keypoints_dir, root_file + '_2.json'))
+
+                    print('Deleting label maps file:', root_file)
+                    os.remove(os.path.join(label_maps_dir, root_file + '_4.png'))
+
+                    print('Deleting skeletons file:', root_file)
+                    os.remove(os.path.join(skeletons_dir, root_file + '_5.jpg'))
+
                     deleted_samples += 1
 
             print('Number of train images:', train_count)
             print('Number of test images:', test_count)
             print('Number of deleted objects:', deleted_samples)
+
+
 
         f_test.close()
     f_train.close()
