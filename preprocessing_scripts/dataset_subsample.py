@@ -48,8 +48,8 @@ if __name__ == "__main__":
     train_test_ratio = 10
 
     # train-test writing loop
-    with open('train_pairs_new.txt', 'w') as f_train:
-        with open('test_pairs_new.txt', 'w') as f_test:
+    with open(os.path.join(opt.root_dir,'train_pairs_new.txt'), 'w') as f_train:
+        with open(os.path.join(opt.root_dir,'train_pairs_new.txt'), 'w') as f_test:
 
             write_count = 0
 
