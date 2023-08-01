@@ -66,7 +66,28 @@ class CPDataset(data.Dataset):
         im = Image.open(osp.join(self.data_path, 'images', im_name))
         im = self.transform(im)  # [-1,1]
 
+        DressCode_labelmap={
+
+            (0, 0, 0):0,    # 0=Background
+            (128, 0, 0): 1,  # hat
+            (0, 128, 0):2,  #hair
+            (0, 0, 128): 5,  # upper clothes
+            (128,128, 128): 6,  # dress
+            (0, 128, 128): 9,  # pants
+            (192, 128, 0): 13,  # face
+            (64, 128, 128): 14,  # left arm
+            (192, 128, 128): 15,  # right arm
+            (64, 0, 128): 16,  # left leg
+            (192, 0, 128): 17,  # right leg
+            (192, 0, 0): 18,  # left shoe
+            (64, 128, 0): 19,  # right shoe
+            (0, 64, 0): 21,  # bag
+            (64, 0,0): 22,  # belt
+
+        }
         """
+        
+        
         LIP labels
         
         [(0, 0, 0),    # 0=Background
