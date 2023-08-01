@@ -25,7 +25,6 @@ def dataset_resize(old_dir, new_dir, scale):
         for name in files:
             if name.endswith(".jpg"):
                 resized = image_resize(f"{root}/{name}", scale,interpolation=cv2.INTER_AREA)
-                print(resized.shape)
                 cv2.imwrite(root.replace(old_dir, new_dir, 1) + f"/{name}", resized)
             elif name.endswith(".png"):
                 resized = image_resize(f"{root}/{name}", scale,interpolation=cv2.INTER_NEAREST_EXACT)
