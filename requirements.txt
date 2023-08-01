@@ -1,0 +1,9 @@
+numpy
+Pillow
+torch
+torchvision
+matplotlib
+urllib3==1.26.14
+opencv-python
+scikit-learn
+pycocotools
