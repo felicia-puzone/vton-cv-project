@@ -38,8 +38,11 @@ if __name__ == "__main__":
     label_maps_dir = os.path.join(opt.root_dir,"label_maps")
     skeletons_dir = os.path.join(opt.root_dir,"skeletons")
 
-    with open('train_pairs_new.txt', 'w') as f:
-        f.write('Create a new text file!')
+    with open('train_pairs_cv13.txt', 'w') as f:
+        f.write('Created train_pairs file!')
+
+    with open('test_pairs_cv13.txt', 'w') as f:
+        f.write('Created test_pairs file!')
 
     train_count = 0
     test_count = 0
@@ -48,8 +51,8 @@ if __name__ == "__main__":
     train_test_ratio = 10
 
     # train-test writing loop
-    with open(os.path.join(opt.root_dir,'train_pairs_new.txt'), 'w') as f_train:
-        with open(os.path.join(opt.root_dir,'train_pairs_new.txt'), 'w') as f_test:
+    with open(os.path.join(opt.root_dir,'train_pairs_cv13.txt'), 'w') as f_train:
+        with open(os.path.join(opt.root_dir,'test_pairs_cv13.txt'), 'w') as f_test:
 
             write_count = 0
 
@@ -101,8 +104,6 @@ if __name__ == "__main__":
             print('Number of train images:', train_count)
             print('Number of test images:', test_count)
             print('Number of deleted objects:', deleted_samples)
-
-
 
         f_test.close()
     f_train.close()

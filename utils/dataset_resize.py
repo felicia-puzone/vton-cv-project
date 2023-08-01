@@ -26,7 +26,7 @@ def dataset_resize(old_dir, new_dir, scale):
             if name.endswith(".jpg"):
                 resized = image_resize(f"{root}/{name}", scale,interpolation=cv2.INTER_AREA)
                 cv2.imwrite(root.replace(old_dir, new_dir, 1) + f"/{name}", resized)
-            if name.endswith(".png"):
+            elif name.endswith(".png"):
                 resized = image_resize(f"{root}/{name}", scale,interpolation=cv2.INTER_NEAREST_EXACT)
                 cv2.imwrite(root.replace(old_dir, new_dir, 1) + f"/{name}", resized)
             elif name.endswith(".npz"):
@@ -47,11 +47,11 @@ def dataset_resize(old_dir, new_dir, scale):
 
 if __name__ == "__main__":
     p1 = Process(target=dataset_resize,
-                 args=("D:\\Tumor\\DressCode\\dresses", "D:\\Tumor\\DressCodeFinal2.0\\dresses", 0.25), daemon=True)
+                 args=("C:\\Users\\ruteryan\\Desktop\\DressCodeFinal4.0\\dresses", "C:\\DressCodeFinal4.0_resized\\dresses", 0.5), daemon=True)
     p2 = Process(target=dataset_resize,
-                 args=("D:\\Tumor\\DressCode\\lower_body", "D:\\Tumor\\DressCodeFinal2.0\\lower_body", 0.25), daemon=True)
+                 args=("C:\\Users\\ruteryan\\Desktop\\DressCodeFinal4.0\\lower_body", "C:\\DressCodeFinal4.0_resized\\lower_body", 0.5), daemon=True)
     p3 = Process(target=dataset_resize,
-                 args=("D:\\Tumor\\DressCode\\upper_body", "D:\\Tumor\\DressCodeFinal2.0\\upper_body", 0.25), daemon=True)
+                 args=("C:\\Users\\ruteryan\\Desktop\\DressCodeFinal4.0\\upper_body", "C:\\DressCodeFinal4.0_resized\\upper_body", 0.5), daemon=True)
     p1.start(), p2.start(), p3.start()
     p1.join()
     p2.join()

@@ -118,7 +118,7 @@ class CPDataset(data.Dataset):
         parse_name = im_name.replace('.jpg', '.png')
         im_parse = Image.open(
             # osp.join(self.data_path, 'image-parse', parse_name)).convert('L')
-            osp.join(self.data_path, 'image-parse-new', parse_name)).convert('L')   # updated new segmentation
+            osp.join(self.data_path, 'label_maps', parse_name)).convert('L')   # updated new segmentation
         parse_array = np.array(im_parse)
         im_mask = Image.open(
             osp.join(self.data_path, 'image-mask', parse_name)).convert('L')
@@ -262,7 +262,7 @@ if __name__ == "__main__":
     parser.add_argument("--dataroot", default="data")
     parser.add_argument("--datamode", default="train")
     parser.add_argument("--stage", default="GMM")
-    parser.add_argument("--data_list", default="train_pairs.txt")
+    parser.add_argument("--data_list", default="train_pairs_cv13.txt")
     parser.add_argument("--fine_width", type=int, default=192)
     parser.add_argument("--fine_height", type=int, default=256)
     parser.add_argument("--radius", type=int, default=3)
