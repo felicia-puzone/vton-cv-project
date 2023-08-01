@@ -49,11 +49,11 @@ if __name__ == "__main__":
 
     p1 = Process(target=dataset_resize,
 
-                 args=("C:\\Users\\ruteryan\\Desktop\\DressCodeFinal4.0\\dresses", "C:\\DressCodeFinal4.0_resized\\dresses", 0.5), daemon=True)
+                 args=("C:\\Users\\ruteryan\\Desktop\\DressCodeFinal4.0\\dresses", "C:\\DressCodeFinal5.0\\dresses", 0.5), daemon=True)
     p2 = Process(target=dataset_resize,
-                 args=("C:\\Users\\ruteryan\\Desktop\\DressCodeFinal4.0\\lower_body", "C:\\DressCodeFinal4.0_resized\\lower_body", 0.5), daemon=True)
+                 args=("C:\\Users\\ruteryan\\Desktop\\DressCodeFinal4.0\\lower_body", "C:\\DressCodeFinal5.0\\lower_body", 0.5), daemon=True)
     p3 = Process(target=dataset_resize,
-                 args=("C:\\Users\\ruteryan\\Desktop\\DressCodeFinal4.0\\upper_body", "C:\\DressCodeFinal4.0_resized\\upper_body", 0.5), daemon=True)
+                 args=("C:\\Users\\ruteryan\\Desktop\\DressCodeFinal4.0\\upper_body", "C:\\DressCodeFinal5.0\\upper_body", 0.5), daemon=True)
 
     p1.start(), p2.start(), p3.start()
     p1.join()
