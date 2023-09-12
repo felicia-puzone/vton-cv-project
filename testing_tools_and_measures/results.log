@@ -1,0 +1,14 @@
+INFO 2023-09-02 19:20:57,725 ==== IoU GMM checkpoints 315.000 steps dresscode 4.0 testset dresscode 5.0
+INFO 2023-09-02 19:20:57,755 ==== IoU mean Accuracy: 0.7975141500753273, Std: 0.14283021150807143
+
+INFO 2023-09-02 19:24:02,220 ==== IoU GMM checkpoints 200.000 steps dresscode 4.0 testset dresscode 5.0
+INFO 2023-09-02 19:24:02,221 ==== IoU mean Accuracy: 0.7841692855728195, Std: 0.14445066509058088
+
+
+INFO 2023-09-02 19:27:05,072 ==== IoU GMM checkpoints 315.000 steps dresscode 4.0 testset dresscode 4.0
+INFO 2023-09-02 19:27:05,072 ==== IoU mean Accuracy: 0.7537778976331155, Std: 0.13288710524950514
+
+INFO 2023-09-02 19:28:46,795 ==== IoU GMM checkpoints 200.000 steps dresscode 4.0 testset dresscode 4.0
+INFO 2023-09-02 19:28:46,796 ==== IoU mean Accuracy: 0.7497447225826621, Std: 0.13320829309860083
+
+>> Accuracy on both test sets is better with more training step performed => no overfitting
