@@ -26,6 +26,7 @@ N_POSITIVE_EXAMPLES = N_NEGATIVE_EXAMPLES
 CLASS_NAMES = ['no match', 'match']
 
 MODEL_NAME_DEFAULT = "SimilarityNet_synth_data_6.pth"
+CHECKPOINT_PATH_DEFAULT = "models/" + MODEL_NAME_DEFAULT
 
 # N_BEST_KEYPOINTS = 200
 N_BEST_KEYPOINTS = 50
@@ -54,3 +55,5 @@ MIN_DELTA = 2e-3
 
 DEVICE = "cuda" if cuda_is_available() else "cpu"
 PIN_MEMORY = True if DEVICE == "cuda" else False
+
+TOP_K = 5

@@ -6,6 +6,7 @@ import os
 from pathlib import Path
 import pickle
 import copyreg
+import argparse
 
 import config_file as cfg
 import utils
@@ -29,6 +30,19 @@ def prepare_plot(img, top_k_img):
 
     for index in range(1, k + 1):
         ax[index].imshow(top_k_img[index - 1])
+        ax[index].set_title(f"Top {index} retrieved image")
+
+    figure.tight_layout()
+    figure.show()
+    plt.show()
+
+
+def plot_img_list(img_list):
+    k = len(img_list)
+    figure, ax = plt.subplots(nrows=1, ncols=k + 1, figsize=(10, 10))
+
+    for index in range(k):
+        ax[index].imshow(img_list[index])
         ax[index].set_title(f"Top {index} retrieved image")
 
     figure.tight_layout()
@@ -80,14 +94,30 @@ def make_top_k_retrieval(model, worn_cloth_features, transform, k: int = 5, clas
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Perform a retrieval of top-k similar in-shop cloth items")
+    parser.add_argument("--checkpoint_path", default=cfg.CHECKPOINT_PATH_DEFAULT, help="checkpoint file path")
+    parser.add_argument("-image_path", help="reference image")
+    parser.add_argument("-label_map_path", help="label map of the reference image")
+    parser.add_argument("--top_k", default=cfg.TOP_K, help="top-k in-shop matches")
+    parser.add_argument("--repo_path", default=cfg.DST_IN_SHOP_CLOTH_PATH,
+                        help="repository of the in-shop cloth features")
+
+    args = parser.parse_args()
+    checkpoint_path = args.checkpoint_path
+    image_path = args.image_path
+    label_map_path = args.label_map_path
+    top_k = args.top_k
+    repo_path = args.repo_path
+
     model = mod.SimilarityNet(in_features=cfg.IN_FEATURES, hidden_units=cfg.HIDDEN_UNITS)
-    utils.load_model(model=model, model_path=Path("models/SimilarityNet_synth_data_6.pth"))
+    utils.load_model(model=model, model_path=Path(checkpoint_path))
     model.to(cfg.DEVICE)
 
-    img_path = Path(r"C:\Users\martu\cloth_retrieval_orb\inference_data\000003_0.jpg")
+    img_path = Path(image_path)
     img = utils.open_and_resize_img(img_path=img_path, new_dims=cfg.RESIZE_IMG_DIMS, is_grayscale=False)
     label_map = utils.open_and_resize_img(
-        img_path=Path(r"C:\Users\martu\cloth_retrieval_orb\inference_data\000003_4.png"),
+        img_path=Path(label_map_path),
         new_dims=cfg.RESIZE_IMG_DIMS, is_grayscale=False)
 
     x, y, w, h = utils.find_bounding_box_from_mask(label_map=label_map, target_rgb_color=cfg.TARGET_RGB_COLOR)
@@ -96,19 +126,21 @@ if __name__ == "__main__":
 
     data_transform = utils.transform_to_tensor
 
-    top_k_cloth = make_top_k_retrieval(model=model, worn_cloth_features=worn_features, transform=data_transform, k=5,
-                                       class_names=cfg.CLASS_NAMES, device=cfg.DEVICE)
+    top_k_cloth = make_top_k_retrieval(model=model, worn_cloth_features=worn_features, transform=data_transform, k=top_k,
+                                       class_names=cfg.CLASS_NAMES, repo_path=repo_path, device=cfg.DEVICE)
 
-    if len(top_k_cloth) == 0:
-        print("No match found!")
-    else:
-        print(top_k_cloth)
-        top_k_img = []
-        for cloth_name, cloth_prob in top_k_cloth:
-            tmp_path = cfg.DATASET_IMAGES_PATH / str(cloth_name.name.split(".")[0] + "_1.jpg")
-            tmp_img = utils.open_and_resize_img(img_path=tmp_path, new_dims=cfg.RESIZE_IMG_DIMS, is_grayscale=False)
-            top_k_img.append(tmp_img)
+    with open('top_k_matches.txt', 'w') as out_file:
+        if len(top_k_cloth) == 0:
+            print("No match found!")
+        else:
+            print(top_k_cloth)
+            top_k_img = []
+            for cloth_name, cloth_prob in top_k_cloth:
+                tmp_path = cfg.DATASET_IMAGES_PATH / str(cloth_name.name.split(".")[0] + "_1.jpg")
+                tmp_img = utils.open_and_resize_img(img_path=tmp_path, new_dims=cfg.RESIZE_IMG_DIMS, is_grayscale=False)
+                top_k_img.append(tmp_img)
+                print(cloth_name.name.split(".")[0], file=out_file)
 
-        # invocare la funzione per la visualizzazione delle immagini
-        img = utils.open_and_resize_img(img_path=img_path, new_dims=cfg.RESIZE_IMG_DIMS, is_grayscale=False)
-        prepare_plot(img, top_k_img)
+            # invocare la funzione per la visualizzazione delle immagini
+            img = utils.open_and_resize_img(img_path=img_path, new_dims=cfg.RESIZE_IMG_DIMS, is_grayscale=False)
+            prepare_plot(img, top_k_img)
