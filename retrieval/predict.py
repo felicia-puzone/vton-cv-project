@@ -52,7 +52,7 @@ def plot_img_list(img_list):
 
 def make_top_k_retrieval(model, worn_cloth_features, transform, k: int = 5, class_names=cfg.CLASS_NAMES,
                          repo_path: Path = cfg.DST_IN_SHOP_CLOTH_PATH, device="cuda"):
-    in_shop_path_list = list(cfg.DST_IN_SHOP_CLOTH_PATH.glob("*"))
+    in_shop_path_list = list(repo_path.glob("*"))
 
     model = model.to(device)
     model.eval()
@@ -102,32 +102,36 @@ if __name__ == "__main__":
     parser.add_argument("--top_k", default=cfg.TOP_K, help="top-k in-shop matches")
     parser.add_argument("--repo_path", default=cfg.DST_IN_SHOP_CLOTH_PATH,
                         help="repository of the in-shop cloth features")
+    parser.add_argument("--dataset_path", default=cfg.DATASET_IMAGES_PATH, help="dataset path")
+    parser.add_argument("--target_mask_color", default="0,0,128",
+                        help="target color in the label map, in rgb format; example: 0,128,0")
 
     args = parser.parse_args()
-    checkpoint_path = args.checkpoint_path
-    image_path = args.image_path
-    label_map_path = args.label_map_path
-    top_k = args.top_k
-    repo_path = args.repo_path
+    checkpoint_path = Path(args.checkpoint_path)
+    image_path = Path(args.image_path)
+    label_map_path = Path(args.label_map_path)
+    top_k = int(args.top_k)
+    repo_path = Path(args.repo_path)
+    dataset_path = Path(args.dataset_path)
+    target_mask_color = list(map(int, args.target_mask_color.split(",")))
 
     model = mod.SimilarityNet(in_features=cfg.IN_FEATURES, hidden_units=cfg.HIDDEN_UNITS)
-    utils.load_model(model=model, model_path=Path(checkpoint_path))
+    utils.load_model(model=model, model_path=checkpoint_path)
     model.to(cfg.DEVICE)
 
-    img_path = Path(image_path)
-    img = utils.open_and_resize_img(img_path=img_path, new_dims=cfg.RESIZE_IMG_DIMS, is_grayscale=False)
+    img = utils.open_and_resize_img(img_path=image_path, new_dims=cfg.RESIZE_IMG_DIMS, is_grayscale=False)
     label_map = utils.open_and_resize_img(
-        img_path=Path(label_map_path),
+        img_path=label_map_path,
         new_dims=cfg.RESIZE_IMG_DIMS, is_grayscale=False)
 
-    x, y, w, h = utils.find_bounding_box_from_mask(label_map=label_map, target_rgb_color=cfg.TARGET_RGB_COLOR)
+    x, y, w, h = utils.find_bounding_box_from_mask(label_map=label_map, target_rgb_color=target_mask_color)
     worn_cloth = img[y:y + h, x:x + w, :]
     worn_features = utils.get_features_from_image_rgb(worn_cloth)
 
     data_transform = utils.transform_to_tensor
 
-    top_k_cloth = make_top_k_retrieval(model=model, worn_cloth_features=worn_features, transform=data_transform, k=top_k,
-                                       class_names=cfg.CLASS_NAMES, repo_path=repo_path, device=cfg.DEVICE)
+    top_k_cloth = make_top_k_retrieval(model=model, worn_cloth_features=worn_features, transform=data_transform,
+                                       k=top_k, class_names=cfg.CLASS_NAMES, repo_path=repo_path, device=cfg.DEVICE)
 
     with open('top_k_matches.txt', 'w') as out_file:
         if len(top_k_cloth) == 0:
@@ -136,11 +140,10 @@ if __name__ == "__main__":
             print(top_k_cloth)
             top_k_img = []
             for cloth_name, cloth_prob in top_k_cloth:
-                tmp_path = cfg.DATASET_IMAGES_PATH / str(cloth_name.name.split(".")[0] + "_1.jpg")
+                tmp_path = dataset_path / str(cloth_name.name.split(".")[0] + "_1.jpg")
                 tmp_img = utils.open_and_resize_img(img_path=tmp_path, new_dims=cfg.RESIZE_IMG_DIMS, is_grayscale=False)
                 top_k_img.append(tmp_img)
                 print(cloth_name.name.split(".")[0], file=out_file)
 
-            # invocare la funzione per la visualizzazione delle immagini
-            img = utils.open_and_resize_img(img_path=img_path, new_dims=cfg.RESIZE_IMG_DIMS, is_grayscale=False)
+            img = utils.open_and_resize_img(img_path=image_path, new_dims=cfg.RESIZE_IMG_DIMS, is_grayscale=False)
             prepare_plot(img, top_k_img)
